@@ -387,7 +387,7 @@ public class general_service_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                ChiefUI form = new ChiefUI();
+                MainUI form = new MainUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

@@ -238,6 +238,11 @@ public class chooseLogin extends javax.swing.JFrame {
                 jButton1_chiefMouseExited(evt);
             }
         });
+        jButton1_chief.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_chiefActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -492,6 +497,10 @@ public class chooseLogin extends javax.swing.JFrame {
         rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jButton_securityMouseClicked
+
+    private void jButton1_chiefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_chiefActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1_chiefActionPerformed
 
     /**
      * @param args the command line arguments

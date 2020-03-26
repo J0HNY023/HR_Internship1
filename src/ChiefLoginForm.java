@@ -240,18 +240,16 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel5.setText("WELCOME");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ideapad 520\\Desktop\\BAPTC\\world-map-19-colorful-art-by-sharon-cummings-sharon-cummings.jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(59, 59, 59)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -385,7 +383,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                ChiefUI form = new ChiefUI();
+                MainUI form = new MainUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);
@@ -398,7 +396,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ChiefLoginForm.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }        
     }//GEN-LAST:event_jButton_loginButtonActionPerformed
 
     private void jButton_loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_loginButtonMouseEntered

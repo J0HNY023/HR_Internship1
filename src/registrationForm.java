@@ -666,7 +666,7 @@ public class registrationForm extends javax.swing.JFrame {
         }catch(NumberFormatException e){
             
             JOptionPane.showMessageDialog(null, "contact should be a number", "Empty Field", 2);
-         
+            
         } 
          try{
         number2 = Integer.parseInt(jTextField_ssnumber.getText());
@@ -738,7 +738,8 @@ public class registrationForm extends javax.swing.JFrame {
            }
             
             
-            String registrationUserQuery = "INSERT INTO "+db+"(`FirstName`, `LastName`, `BirthDate`, `Gender`, `Address`, `Contact`, `FatherFirstName`,`FatherLastName`,`MotherFirstName`, `MotherLastName`, `SssNumber`, `Tax`,`Position`, `UnitDivision`, `idNumbers`, `Password`, `ConfirmPassword`) "
+            String registrationUserQuery = "INSERT INTO "+db+"(`FirstName`, `LastName`, `BirthDate`, `Gender`, `Address`, `Contact`, `FatherFirstName`,`FatherLastName`,`MotherFirstName`, "
+                    + "`MotherLastName`, `SssNumber`, `Tax`,`Position`, `UnitDivision`, `idNumbers`, `Password`, `ConfirmPassword`) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             try{
                 ps = Chief_db.getConnection().prepareStatement(registrationUserQuery);
@@ -763,6 +764,10 @@ public class registrationForm extends javax.swing.JFrame {
                 if(ps.executeUpdate() != 0 )
                 {
                     JOptionPane.showMessageDialog(null, "Account has been created");
+                    dispose();
+                    ChiefLoginForm clf = new ChiefLoginForm();
+                    clf.setLocationRelativeTo(null);
+                    clf.setVisible(true);
                 }else
                 {
                     JOptionPane.showMessageDialog(null, "Error: Please check the informations");
