@@ -387,7 +387,11 @@ public class Info_and_comm_Form extends javax.swing.JFrame {
             {
                 //show a new form
                 MainUI form = new MainUI();
+                //form.settext();
+                
+                
                 form.setVisible(true);
+                
                 form.pack();
                 form.setLocationRelativeTo(null);
                 

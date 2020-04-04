@@ -1,22 +1,13 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ideapad%20520/Documents/NetBeansProjects/HRProject/HR_Internship1/src/MainUI.java</file>
-            <file>file:/C:/Users/ideapad%20520/Documents/NetBeansProjects/HRProject/HR_Internship1/src/chooseLogin.java</file>
-            <file>file:/C:/Users/ideapad%20520/Documents/NetBeansProjects/HRProject/HR_Internship1/src/registrationForm.java</file>
-            <file>file:/C:/Users/ideapad%20520/Documents/NetBeansProjects/HRProject/HR_Internship1/src/ChiefLoginForm.java</file>
+            <file>file:/C:/Users/Carmelindo/Desktop/HRInternship1/HRProject/src/Security_Form.java</file>
+            <file>file:/C:/Users/Carmelindo/Desktop/HRInternship1/HRProject/src/Info_and_comm_Form.java</file>
+            <file>file:/C:/Users/Carmelindo/Desktop/HRInternship1/HRProject/src/masterList.java</file>
+            <file>file:/C:/Users/Carmelindo/Desktop/HRInternship1/HRProject/src/MainUI.java</file>
+            <file>file:/C:/Users/Carmelindo/Desktop/HRInternship1/HRProject/src/ChiefLoginForm.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> c090665a80677b90c0b50b8ed9ef9bd9391b45f3

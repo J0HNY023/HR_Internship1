@@ -1,10 +1,12 @@
 
 import java.awt.Color;
+import java.awt.Component;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,6 +27,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
     /**
      * Creates new form loginForm
      */
+    MainUI form;
     public ChiefLoginForm() {
         initComponents(); 
         this.setResizable(false);
@@ -62,6 +65,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel_back = new javax.swing.JLabel();
+        hiddentxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +96,9 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         jButton_loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jButton_loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_loginButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_loginButtonMouseEntered(evt);
             }
@@ -180,7 +187,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_idnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,6 +285,10 @@ public class ChiefLoginForm extends javax.swing.JFrame {
             }
         });
 
+        hiddentxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        hiddentxt.setText("0");
+        hiddentxt.setEnabled(false);
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -294,7 +305,9 @@ public class ChiefLoginForm extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                         .addGap(0, 43, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hiddentxt, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64))))
@@ -302,18 +315,21 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_exit)
-                    .addComponent(jLabel_minimize)
-                    .addComponent(jLabel_back))
-                .addGap(66, 66, 66)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addContainerGap()
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_exit)
+                            .addComponent(jLabel_minimize)
+                            .addComponent(jLabel_back))
+                        .addGap(54, 54, 54)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(hiddentxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -363,6 +379,11 @@ public class ChiefLoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_exitFocusGained
 
     private void jButton_loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginButtonActionPerformed
+        
+      // MainUI ui =new MainUI();
+       //ui.getFirstName_and_lastName.setText("texts");
+       
+        
         PreparedStatement ps;
         ResultSet rs;
         
@@ -373,6 +394,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         //create a select quesry to check if the username and the password exist in db
         String query = "SELECT * FROM `chief_table` WHERE `idNumbers` = ? AND `password` = ?";
         
+         
         try {
             ps = Chief_db.getConnection().prepareStatement(query);
             
@@ -384,9 +406,17 @@ public class ChiefLoginForm extends javax.swing.JFrame {
             {
                 //show a new form
                 MainUI form = new MainUI();
+                form.settext(2);
+                
+               
                 form.setVisible(true);
+                
+                
+                
                 form.pack();
                 form.setLocationRelativeTo(null);
+                
+
                 
                 //close the current form(login)
                 this.dispose();
@@ -472,6 +502,14 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         jLabel_back.setForeground(Color.black);
     }//GEN-LAST:event_jLabel_backMouseExited
 
+    private void jButton_loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_loginButtonMouseClicked
+        
+       MainUI ui =new MainUI();
+       ui.getFirstName_and_lastName.setText("texts");
+       
+           
+    }//GEN-LAST:event_jButton_loginButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -499,6 +537,8 @@ public class ChiefLoginForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //JFrame f=new JFrame("Button Example");  
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -509,6 +549,7 @@ public class ChiefLoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hiddentxt;
     private javax.swing.JButton jButton_loginButton;
     private javax.swing.JButton jButton_show;
     private javax.swing.JLabel jLabel1;

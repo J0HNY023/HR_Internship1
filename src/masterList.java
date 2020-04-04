@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +19,29 @@
  */
 public class masterList extends javax.swing.JFrame {
 
-    /**
-     * Creates new form masterList
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    public Integer formNumber = 0;
+    
+    public String db="";
+    private static String chief = "chief_table";
+    private static String info = "info_table";
+    private static String insti = "insti_table";   
+    private static String asset = "asset_table";
+    private static String human = "human_table";
+    private static String trading = "trading_table";
+    private static String admin = "admin_table";
+    private static String general = "general_table";
+    private static String publics = "publics_table";
+    private static String finance = "finance_table";
+    private static String security = "security_table";
+    
     public masterList() {
         initComponents();
+        
+        
+        showDataTable();
     }
 
     /**
@@ -27,6 +54,10 @@ public class masterList extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -34,15 +65,61 @@ public class masterList extends javax.swing.JFrame {
         kGradientPanel1.setkGradientFocus(1);
         kGradientPanel1.setkStartColor(new java.awt.Color(102, 204, 255));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setText("←");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Master List");
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1342, Short.MAX_VALUE)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -58,6 +135,20 @@ public class masterList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        MainUI rf = new MainUI();
+        rf.setVisible(true);
+        rf.pack();
+        rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        showDataTable();
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -93,8 +184,64 @@ public class masterList extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void showDataTable(){
+        
+//        if(formNumber != 0){
+//             if(formNumber == 1){
+//            db = chief;
+//             }
+//             else if(formNumber == 2){
+//            db = info;
+//            }
+//             else if(formNumber == 3){
+//            db = insti;
+//            }
+//             else if(formNumber == 4){
+//            db = asset;
+//            }
+//             else if(formNumber == 5){
+//            db = human;
+//            }
+//             else if(formNumber == 6){
+//            db = trading;
+//            }
+//             else if(formNumber == 7){
+//            db = admin;
+//            }
+//             else if(formNumber == 8){
+//            db = general;
+//            }
+//             else if(formNumber == 9){
+//            db = publics;
+//            }
+//             else if(formNumber == 10){
+//            db = finance;
+//            }
+//             else if(formNumber == 11){
+//            db = security;
+//            }
+//           }
+        
+        
+         try{
+       con = DriverManager.getConnection("jdbc:mysql://localhost:3306/chief_db?"+"autoReconnect=true&useSSL=false", "root","");
+       String sql = "SELECT FirstName,LastName,BirthDate,Gender,Address,Contact,SssNumber,Tax,Position,UnitDivision,idNumbers FROM chief_table";
+       pst = con.prepareStatement(sql);
+       rs = pst.executeQuery();
+       jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null,"table is :"+db);
+       }
+   }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 
 /**
@@ -15,13 +19,22 @@ import javax.swing.JOptionPane;
  */
 public class MainUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form mainUI
-     */
+   
+
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+ 
+    
+    public String t="";
+    public Integer n; 
 
     public MainUI() {
-        initComponents();
         
+        initComponents();
+        settext(n);
+        
+       
     }
 
  
@@ -118,6 +131,11 @@ public class MainUI extends javax.swing.JFrame {
         jMenu4.setText("Admin");
 
         jMenuItem2.setText("Masterlist");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
@@ -338,10 +356,25 @@ public class MainUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem_memoFormActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        masterList rf = new masterList();
+          
+        rf.setVisible(true);
+        rf.pack();
+        rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+       
     public static void main(String args[]) {
+          
+       
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -374,10 +407,85 @@ public class MainUI extends javax.swing.JFrame {
                 new MainUI().setVisible(true);
             }
         });
+        
+        
     }
-
+    public void settext(Integer n){
+        if(n != null){
+            switch (n) {
+                case 1:
+                    t = "chief_table";
+                     
+                    break;
+                case 2:
+                    t = "info_table";
+                     
+                    break;
+                case 3:
+                    t = "insti_table";
+                   
+                    break;
+                case 4:
+                    t = "asset_table";
+                     
+                    break;
+                case 5:
+                    t = "human_table";
+                   
+                    break;
+                case 6:
+                    t = "trading_table";
+                    break;
+                case 7:
+                    t = "admin_table";
+                    break;
+                case 8:
+                    t = "general_table";
+                    break;
+                case 9:
+                    t = "publics_table";
+                    break;
+                case 10:
+                    t = "finance_table";
+                    break;
+                case 11:
+                    t = "security_table";
+                    break;
+                default:
+                    break;
+            }
+            JOptionPane.showMessageDialog(null,"Welcome"+ t);
+        
+        
+        //String sql = "SELECT LastName FROM "+t+" WHERE id="+n;
+        //System.out.println("t :"+t + "  n: "+n);
+        
+        }
+       // System.exit(0);
+        //getFirstName_and_lastName.setText(""+t);
+        
+        
+        try{
+       con = DriverManager.getConnection("jdbc:mysql://localhost:3306/chief_db?"+"autoReconnect=true&useSSL=false", "root","");
+       String sql = "SELECT LastName FROM chief_table WHERE id=1";
+       pst = con.prepareStatement(sql);
+       rs = pst.executeQuery();
+       while(rs.next()){
+          // System.out.println("rs : "+rs.getString(1));
+           getFirstName_and_lastName.setText(""+rs.getString(1));
+       }
+       
+       
+       //jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+           //getFirstName_and_lastName.setText(""+rs.getString("FirstName"));
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e);
+       }
+      
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel getFirstName_and_lastName;
+    public javax.swing.JLabel getFirstName_and_lastName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
