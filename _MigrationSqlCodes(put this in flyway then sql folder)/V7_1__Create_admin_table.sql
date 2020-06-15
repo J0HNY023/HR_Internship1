@@ -2,7 +2,7 @@ CREATE TABLE admin_table (
   id INT NOT NULL AUTO_INCREMENT,
   FirstName VARCHAR(45) NULL,
   LastName VARCHAR(45) NULL,
-  BirthDate VARCHAR(45) NULL,
+  BirthDate Date NULL,
   Gender VARCHAR(45) NULL,
   Address VARCHAR(45) NULL,
   Contact INT NULL,

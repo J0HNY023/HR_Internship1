@@ -390,7 +390,7 @@ public class Asset_and_amenities_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                MainUI form = new MainUI();
+                AssetsUI form = new AssetsUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

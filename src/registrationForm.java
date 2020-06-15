@@ -1,5 +1,9 @@
 
 import java.awt.Color;
+import java.awt.Image;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import javax.swing.ButtonGroup;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 // okay na siguro kahit tangalin na ung ibang registration form maliban dito
@@ -95,7 +101,7 @@ public class registrationForm extends javax.swing.JFrame {
         jTextField_tax = new javax.swing.JTextField();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         jTextField_id = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButton_register = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel_exit = new javax.swing.JLabel();
         jLabel_minimize = new javax.swing.JLabel();
@@ -105,8 +111,13 @@ public class registrationForm extends javax.swing.JFrame {
         jButton_show1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField_position = new javax.swing.JTextField();
+        jTextField_pagibig = new javax.swing.JTextField();
         jTextField_unit = new javax.swing.JTextField();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel_image = new javax.swing.JLabel();
+        jButton_addImage = new javax.swing.JButton();
+        jTextField_position1 = new javax.swing.JTextField();
+        jTextField_philhealth = new javax.swing.JTextField();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -264,7 +275,7 @@ public class registrationForm extends javax.swing.JFrame {
 
         jTextField_ssnumber.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
         jTextField_ssnumber.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField_ssnumber.setText("SS Number");
+        jTextField_ssnumber.setText("SSS Number");
         jTextField_ssnumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_ssnumberFocusGained(evt);
@@ -387,19 +398,19 @@ public class registrationForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
-        jButton1.setText("Register");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton_register.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        jButton_register.setText("Register");
+        jButton_register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
+                jButton_registerMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
+                jButton_registerMouseExited(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_registerActionPerformed(evt);
             }
         });
 
@@ -496,15 +507,15 @@ public class registrationForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel6.setText("Confirm Password");
 
-        jTextField_position.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
-        jTextField_position.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField_position.setText("Postion");
-        jTextField_position.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField_pagibig.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        jTextField_pagibig.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField_pagibig.setText("Pagibig");
+        jTextField_pagibig.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField_positionFocusGained(evt);
+                jTextField_pagibigFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField_positionFocusLost(evt);
+                jTextField_pagibigFocusLost(evt);
             }
         });
 
@@ -520,20 +531,69 @@ public class registrationForm extends javax.swing.JFrame {
             }
         });
 
+        jDesktopPane1.setLayer(jLabel_image, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_image, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButton_addImage.setText("Add Image");
+        jButton_addImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_addImageActionPerformed(evt);
+            }
+        });
+
+        jTextField_position1.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        jTextField_position1.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField_position1.setText("Postion");
+        jTextField_position1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField_position1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField_position1FocusLost(evt);
+            }
+        });
+
+        jTextField_philhealth.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        jTextField_philhealth.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField_philhealth.setText("Philhealth");
+        jTextField_philhealth.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField_philhealthFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField_philhealthFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel_minimize)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_exit))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel5)
@@ -547,16 +607,24 @@ public class registrationForm extends javax.swing.JFrame {
                                         .addComponent(jPasswordField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton_show))
-                                    .addComponent(jTextField_position)
-                                    .addComponent(jTextField_unit)))
+                                    .addComponent(jTextField_pagibig)
+                                    .addComponent(jTextField_unit)
+                                    .addComponent(jTextField_position1)
+                                    .addComponent(jTextField_philhealth))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(jLabel4)))
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel_minimize)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_exit)))
                 .addContainerGap())
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_addImage)
+                .addGap(162, 162, 162))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,25 +634,35 @@ public class registrationForm extends javax.swing.JFrame {
                     .addComponent(jLabel_exit)
                     .addComponent(jLabel_minimize))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_position, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField_unit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_show, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_show1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jPasswordField_confirmpword))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jTextField_pagibig, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_philhealth, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_position1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_unit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_show, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField_password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_show1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                            .addComponent(jPasswordField_confirmpword)))
+                    .addComponent(jDesktopPane1))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_addImage))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addContainerGap())
@@ -628,8 +706,8 @@ public class registrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_idActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //gathering data
+    private void jButton_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registerActionPerformed
+       
         String birthdate="";
         
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -685,12 +763,15 @@ public class registrationForm extends javax.swing.JFrame {
         String motherlname = jTextField_motherlname.getText();
        
         String tax = jTextField_tax.getText();
-        String position = jTextField_position.getText();
+        String position = jTextField_position1.getText();
         String unit = jTextField_unit.getText();
         String id = jTextField_id.getText();
+        
         String password = String.valueOf(jPasswordField_password.getPassword());
         String confirm = String.valueOf(jPasswordField_confirmpword.getPassword());
         
+        String pagibig = jTextField_pagibig.getText();
+        String philhealth = jTextField_philhealth.getText();
         
         
         
@@ -737,10 +818,11 @@ public class registrationForm extends javax.swing.JFrame {
             }
            }
             
+            //inserting data in database
             
             String registrationUserQuery = "INSERT INTO "+db+"(`FirstName`, `LastName`, `BirthDate`, `Gender`, `Address`, `Contact`, `FatherFirstName`,`FatherLastName`,`MotherFirstName`, "
-                    + "`MotherLastName`, `SssNumber`, `Tax`,`Position`, `UnitDivision`, `idNumbers`, `Password`, `ConfirmPassword`) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "`MotherLastName`, `SssNumber`, `Tax`,`Position`, `UnitDivision`, `idNumbers`, `Password`, `ConfirmPassword`, `image`,`pagibig`,`philhealth`) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ? ,?,?)";
             try{
                 ps = Chief_db.getConnection().prepareStatement(registrationUserQuery);
                 ps.setString(1, firstname);
@@ -760,12 +842,15 @@ public class registrationForm extends javax.swing.JFrame {
                 ps.setString(15, id);
                 ps.setString(16, password);
                 ps.setString(17, confirm);
+                ps.setBytes(18, userImage);
+                ps.setString(19, pagibig);
+                ps.setString(20, philhealth);
                 
                 if(ps.executeUpdate() != 0 )
                 {
                     JOptionPane.showMessageDialog(null, "Account has been created");
                     dispose();
-                    ChiefLoginForm clf = new ChiefLoginForm();
+                    chooseLogin clf = new chooseLogin();
                     clf.setLocationRelativeTo(null);
                     clf.setVisible(true);
                 }else
@@ -778,7 +863,7 @@ public class registrationForm extends javax.swing.JFrame {
         }
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_registerActionPerformed
 
     private void jTextField_fnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_fnameFocusGained
         // clear the textfield if its equal to "First Name"
@@ -1201,35 +1286,35 @@ public class registrationForm extends javax.swing.JFrame {
         jButton_show.setBackground(Color.white);
     }//GEN-LAST:event_jButton_showMouseExited
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(Color.darkGray);
-    }//GEN-LAST:event_jButton1MouseEntered
+    private void jButton_registerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_registerMouseEntered
+        jButton_register.setBackground(Color.darkGray);
+    }//GEN-LAST:event_jButton_registerMouseEntered
 
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(Color.white);
-    }//GEN-LAST:event_jButton1MouseExited
+    private void jButton_registerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_registerMouseExited
+        jButton_register.setBackground(Color.white);
+    }//GEN-LAST:event_jButton_registerMouseExited
 
-    private void jTextField_positionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_positionFocusGained
-        // clear the textfield if its equal to "Position"
-        if(jTextField_position.getText().trim().equals("Position"));
+    private void jTextField_pagibigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_pagibigFocusGained
+        // clear the textfield if its equal to "Pagibig"
+        if(jTextField_pagibig.getText().trim().equals("Pagibig"));
         {
-            jTextField_position.setText("");
-            jTextField_position.setForeground(Color.BLACK);
+            jTextField_pagibig.setText("");
+            jTextField_pagibig.setForeground(Color.BLACK);
         }
-    }//GEN-LAST:event_jTextField_positionFocusGained
+    }//GEN-LAST:event_jTextField_pagibigFocusGained
 
-    private void jTextField_positionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_positionFocusLost
+    private void jTextField_pagibigFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_pagibigFocusLost
         //if the text field is equal to Optional or empty
         //we will set the "Position" text in the textfield
         //on focus  lost event
 
-        if(jTextField_position.getText().trim().equals("") ||
-            jTextField_position.getText().trim().equals("Position"))
+        if(jTextField_pagibig.getText().trim().equals("") ||
+            jTextField_pagibig.getText().trim().equals("Pagibig"))
         {
-            jTextField_position.setText("Position");
-            jTextField_position.setForeground(new Color(153, 153, 153));
+            jTextField_pagibig.setText("Pagibig");
+            jTextField_pagibig.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField_positionFocusLost
+    }//GEN-LAST:event_jTextField_pagibigFocusLost
 
     private void jTextField_unitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_unitFocusGained
          // clear the textfield if its equal to "Unit / Division"
@@ -1252,6 +1337,85 @@ public class registrationForm extends javax.swing.JFrame {
             jTextField_unit.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField_unitFocusLost
+
+    private void jButton_addImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addImageActionPerformed
+        
+        
+        JFileChooser filechoose = new JFileChooser();
+        filechoose.showOpenDialog(null);
+        File f = filechoose.getSelectedFile();
+        
+        filename = f.getAbsolutePath();
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(jLabel_image.getWidth(), jLabel_image.getHeight(), Image.SCALE_DEFAULT));
+        jLabel_image.setIcon(imageIcon);
+        
+        
+        try{
+            File image = new File(filename);
+            FileInputStream fix  = new FileInputStream(image);
+            ByteArrayOutputStream baos =new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            
+            
+            for(int number;(number = fix.read(buf))!= -1;) {
+                
+                baos.write(buf, 0 , number);
+            }
+            userImage = baos.toByteArray();
+            
+            
+            
+            
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton_addImageActionPerformed
+
+    private void jTextField_position1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_position1FocusGained
+        // TODO add your handling code here:
+        if(jTextField_position1.getText().trim().equals("Position"));
+        {
+            jTextField_position1.setText("");
+            jTextField_position1.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField_position1FocusGained
+
+    private void jTextField_position1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_position1FocusLost
+        // TODO add your handling code here:
+        if(jTextField_position1.getText().trim().equals("") ||
+            jTextField_position1.getText().trim().equals("Position"))
+        {
+            jTextField_position1.setText("Position");
+            jTextField_position1.setForeground(new Color(153, 153, 153));
+        }
+        
+    }//GEN-LAST:event_jTextField_position1FocusLost
+
+    private void jTextField_philhealthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_philhealthFocusGained
+        // TODO add your handling code here:
+        // clear the textfield if its equal to "Pagibig"
+        if(jTextField_philhealth.getText().trim().equals("Philhealth"));
+        {
+            jTextField_philhealth.setText("");
+            jTextField_philhealth.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField_philhealthFocusGained
+
+    private void jTextField_philhealthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_philhealthFocusLost
+        // TODO add your handling code here:
+        
+      
+        if(jTextField_philhealth.getText().trim().equals("") ||
+            jTextField_philhealth.getText().trim().equals("Philhealth"))
+        {
+            jTextField_philhealth.setText("Philhealth");
+            jTextField_philhealth.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_jTextField_philhealthFocusLost
 
     //function to verify empty fields
     public boolean verifyFields(){
@@ -1290,7 +1454,7 @@ public class registrationForm extends javax.swing.JFrame {
     String motherlname = jTextField_motherlname.getText();
     String ssnumber = jTextField_ssnumber.getText();
     String tax = jTextField_tax.getText();
-    String position = jTextField_position.getText();
+    String position = jTextField_pagibig.getText();
     String unit = jTextField_unit.getText();
     String idnumber = jTextField_id.getText();
     String password = String.valueOf(jPasswordField_password.getPassword());
@@ -1420,10 +1584,12 @@ public class registrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_addImage;
+    private javax.swing.JButton jButton_register;
     private javax.swing.JButton jButton_show;
     private javax.swing.JButton jButton_show1;
     private com.toedter.calendar.JDateChooser jDateChooser_birthdate;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1431,6 +1597,7 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel_exit;
+    private javax.swing.JLabel jLabel_image;
     private javax.swing.JLabel jLabel_minimize;
     private javax.swing.JPasswordField jPasswordField_confirmpword;
     private javax.swing.JPasswordField jPasswordField_password;
@@ -1445,7 +1612,9 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_lname;
     private javax.swing.JTextField jTextField_motherfname;
     private javax.swing.JTextField jTextField_motherlname;
-    private javax.swing.JTextField jTextField_position;
+    private javax.swing.JTextField jTextField_pagibig;
+    private javax.swing.JTextField jTextField_philhealth;
+    private javax.swing.JTextField jTextField_position1;
     private javax.swing.JTextField jTextField_ssnumber;
     private javax.swing.JTextField jTextField_tax;
     private javax.swing.JTextField jTextField_unit;
@@ -1455,4 +1624,11 @@ public class registrationForm extends javax.swing.JFrame {
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     // End of variables declaration//GEN-END:variables
+    
+    private ImageIcon Img = null; 
+    String filename = null;
+    byte[] userImage = null;
+    
+    
+    
 }

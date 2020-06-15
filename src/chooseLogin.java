@@ -22,6 +22,7 @@ public class chooseLogin extends javax.swing.JFrame {
         this.setResizable(false);
         //making it center       
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -268,7 +269,7 @@ public class chooseLogin extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(jLabel1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton_security, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)

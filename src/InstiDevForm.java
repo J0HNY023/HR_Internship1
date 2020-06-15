@@ -386,7 +386,7 @@ public class InstiDevForm extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                MainUI form = new MainUI();
+                InstiUI form = new InstiUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

@@ -385,7 +385,7 @@ public class Trading_operation_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                MainUI form = new MainUI();
+                TradingUI form = new TradingUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

@@ -385,9 +385,7 @@ public class Security_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 //show a new form
-                MainUI form = new MainUI();
-                form.settext(3);
-                
+                ChiefUI form = new ChiefUI();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

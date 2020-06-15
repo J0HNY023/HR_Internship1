@@ -5,7 +5,7 @@ FirstName, LastName, BirthDate, Gender, Address, Contact, FatherFirstName,Father
 VALUES
 (
 'john',
-'bart',
+'doe',
 '1996-05-05',
 'Gender', 
 'Address', 
